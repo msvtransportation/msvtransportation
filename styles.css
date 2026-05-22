@@ -412,7 +412,7 @@ ul { list-style: none; }
   border-radius: 4px;
   background: var(--bg-2);
 }
-.hero-visual .img-clip img { transform: scale(1.1); transition: clip-path 1.4s var(--ease-out), transform 14s linear; }
+.hero-visual .img-clip img { transform: scale(1.1); transition: transform 14s linear; }
 .hero-visual.in-view .img-clip img { transform: scale(1); animation: heroDrift 14s linear infinite alternate; }
 @keyframes heroDrift {
   from { transform: scale(1.05) translate(-1.5%, -1%); }
