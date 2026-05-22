@@ -1,348 +1,239 @@
-// ===========================
-// Background Video Keep-Alive
-// ===========================
-const bgVideo = document.getElementById('myVideo');
-if (bgVideo) {
-    bgVideo.muted = true;
-    bgVideo.play().catch(() => {
-        // Autoplay blocked by Safari — play on first user interaction
-        const unlock = () => {
-            bgVideo.play().catch(() => {});
-            ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => document.removeEventListener(e, unlock));
-        };
-        ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => document.addEventListener(e, unlock, { once: true }));
+/* ============================================================
+   MSV Transportation — interactions
+   ============================================================ */
+
+// ------------------------------------------------------------
+// Split headings into words for staggered reveal
+// ------------------------------------------------------------
+function splitWords(el) {
+  if (!el || el.dataset.split === "1") return;
+  el.dataset.split = "1";
+  const html = el.innerHTML;
+  // Walk text nodes only, preserving inline tags like <span class="red">
+  const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  let i = 0;
+  nodes.forEach(node => {
+    const parent = node.parentNode;
+    const words = node.textContent.split(/(\s+)/);
+    const frag = document.createDocumentFragment();
+    words.forEach(w => {
+      if (w.trim() === "") {
+        frag.appendChild(document.createTextNode(w));
+      } else {
+        const wrap = document.createElement("span");
+        wrap.className = "reveal-word";
+        const inner = document.createElement("span");
+        inner.textContent = w;
+        inner.style.transitionDelay = (i * 60) + "ms";
+        wrap.appendChild(inner);
+        frag.appendChild(wrap);
+        i++;
+      }
     });
-    bgVideo.addEventListener('pause', () => {
-        bgVideo.play().catch(() => {});
-    });
-    document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) {
-            bgVideo.play().catch(() => {});
-        }
-    });
+    parent.replaceChild(frag, node);
+  });
 }
 
-// ===========================
-// Dynamic Stats
-// ===========================
-(function updateStats() {
-    const now = new Date();
+document.querySelectorAll("[data-split]").forEach(splitWords);
 
-    // Years of experience: auto-increments every year
-    const yearsExp = now.getFullYear() - 2017;
-
-    // Loads delivered: base count at reference date + 8–12 per day (seeded so all visitors see same number)
-    const referenceDate = new Date('2025-01-01');
-    const baseLoads = 20580;
-    const msPerDay = 1000 * 60 * 60 * 24;
-    const daysSince = Math.floor((now - referenceDate) / msPerDay);
-    const refDayNum = Math.floor(referenceDate.getTime() / msPerDay);
-
-    let loads = baseLoads;
-    for (let i = 0; i < daysSince; i++) {
-        // Seeded pseudo-random: deterministic per day, range 8–12
-        const seed = refDayNum + i;
-        const rand = Math.abs(Math.sin(seed * 9301 + 49297)) % 1;
-        loads += 8 + Math.floor(rand * 5); // 8, 9, 10, 11, or 12
+// ------------------------------------------------------------
+// IntersectionObserver — in-view reveals
+// ------------------------------------------------------------
+const inViewObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("in-view");
+      // Don't unobserve — we want to keep state if user resizes,
+      // but it's cheap and safe to release once revealed
+      inViewObserver.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.15, rootMargin: "0px 0px -80px 0px" });
 
-    // Update the DOM
-    document.querySelectorAll('.stat-item').forEach(item => {
-        const label = item.querySelector('.stat-label');
-        const number = item.querySelector('.stat-number');
-        if (!label || !number) return;
-        if (label.textContent.includes('EXPERIENCE')) {
-            number.textContent = yearsExp + '+';
-        } else if (label.textContent.includes('LOADS')) {
-            number.textContent = loads.toLocaleString() + '+';
-        }
-    });
-})();
+document.querySelectorAll("[data-observe]").forEach(el => inViewObserver.observe(el));
 
-// ===========================
-// Mobile Navigation Toggle
-// ===========================
-const navToggle = document.querySelector('.nav-toggle');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-menu a');
-
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    
-    // Animate hamburger icon
-    const spans = navToggle.querySelectorAll('span');
-    if (navMenu.classList.contains('active')) {
-        spans[0].style.transform = 'rotate(45deg) translateY(8px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translateY(-8px)';
-    } else {
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = '';
-    }
-});
-
-// Close menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        const spans = navToggle.querySelectorAll('span');
-        spans[0].style.transform = '';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = '';
-    });
-});
-
-// ===========================
-// Smooth Scrolling
-// ===========================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const navHeight = document.querySelector('.navbar').offsetHeight;
-            const targetPosition = target.offsetTop - navHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// ===========================
-// Navbar Scroll Effect
-// ===========================
-let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
-
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.style.padding = '15px 0';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
-    } else {
-        navbar.style.padding = '20px 0';
-        navbar.style.boxShadow = 'none';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// ===========================
-// FAQ Accordion
-// ===========================
-const faqQuestions = document.querySelectorAll('.faq-question');
-
-faqQuestions.forEach(question => {
-    question.addEventListener('click', () => {
-        const faqItem = question.parentElement;
-        const isActive = faqItem.classList.contains('active');
-        
-        // Close all FAQ items
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.classList.remove('active');
-        });
-        
-        // Open clicked item if it wasn't active
-        if (!isActive) {
-            faqItem.classList.add('active');
-        }
-    });
-});
-
-// ===========================
-// Contact Form Handling
-// ===========================
-const contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        // Show loading state
-        const submitBtn = contactForm.querySelector('.btn-submit');
-        submitBtn.textContent = 'SENDING...';
-        submitBtn.disabled = true;
-        
-        // FormSubmit will handle the actual submission
-        // The form will submit normally to FormSubmit's server
-    });}
-
-// ===========================
-// Scroll Animation Observer
-// ===========================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+// ------------------------------------------------------------
+// Sticky nav state
+// ------------------------------------------------------------
+const nav = document.querySelector(".nav");
+const onScroll = () => {
+  if (window.scrollY > 24) nav.classList.add("scrolled");
+  else nav.classList.remove("scrolled");
+  parallaxHero();
+  updateActiveNav();
 };
+window.addEventListener("scroll", onScroll, { passive: true });
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+// ------------------------------------------------------------
+// Parallax hero
+// ------------------------------------------------------------
+const heroImg = document.querySelector(".hero-visual .img-clip img");
+function parallaxHero() {
+  if (!heroImg) return;
+  const y = window.scrollY;
+  if (y > window.innerHeight) return;
+  const t = Math.min(y / window.innerHeight, 1);
+  heroImg.style.setProperty("--py", (t * 60) + "px");
+  heroImg.style.transform = `translateY(${t * 40}px) scale(${1 + t * 0.05})`;
+}
+
+// ------------------------------------------------------------
+// Active section in nav
+// ------------------------------------------------------------
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-menu a");
+function updateActiveNav() {
+  const y = window.scrollY + 120;
+  let active = null;
+  sections.forEach(sec => {
+    if (sec.offsetTop <= y) active = sec.id;
+  });
+  navLinks.forEach(a => {
+    const target = a.getAttribute("href").replace("#", "");
+    a.classList.toggle("active", target === active);
+  });
+}
+
+// ------------------------------------------------------------
+// Mobile nav toggle
+// ------------------------------------------------------------
+const navToggle = document.querySelector(".nav-toggle");
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    nav.classList.toggle("menu-open");
+    navToggle.classList.toggle("open");
+  });
+  document.querySelectorAll(".nav-menu a").forEach(a => {
+    a.addEventListener("click", () => {
+      nav.classList.remove("menu-open");
+      navToggle.classList.remove("open");
     });
-}, observerOptions);
+  });
+}
 
-// Observe elements for animation
-const animateElements = document.querySelectorAll('.feature-card, .position-card, .service-block, .review-card');
-animateElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+// ------------------------------------------------------------
+// FAQ accordion
+// ------------------------------------------------------------
+document.querySelectorAll(".faq-item").forEach(item => {
+  const q = item.querySelector(".faq-q");
+  const a = item.querySelector(".faq-a");
+  q.addEventListener("click", () => {
+    const isOpen = item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(other => {
+      other.classList.remove("open");
+      other.querySelector(".faq-a").style.maxHeight = "0px";
+    });
+    if (!isOpen) {
+      item.classList.add("open");
+      a.style.maxHeight = a.scrollHeight + "px";
+    }
+  });
 });
 
-// ===========================
-// Counter Animation for Stats
-// ===========================
-const animateCounter = (element, target, duration = 2000) => {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const hasPlus = element.textContent.includes('+');  // Check if original has +
-    
-    const updateCounter = () => {
-        start += increment;
-        if (start < target) {
-            // During animation
-            if (target >= 1000) {
-                element.textContent = Math.floor(start).toLocaleString();
-            } else {
-                element.textContent = Math.floor(start);
-            }
-            requestAnimationFrame(updateCounter);
-        } else {
-            // Final value - add + if it was there originally
-            if (hasPlus) {
-                if (target >= 1000) {
-                    element.textContent = target.toLocaleString() + '+';  // "20,000+"
-                } else {
-                    element.textContent = target + '+';  // "15+"
-                }
-            } else {
-                element.textContent = target.toLocaleString();  // "2017"
-            }
-        }
-    };
-    
-    updateCounter();
-};
+// ------------------------------------------------------------
+// Animated counters
+// ------------------------------------------------------------
+function animateNumber(el) {
+  if (el.dataset.counted === "1") return;
+  el.dataset.counted = "1";
+  const target = parseFloat(el.dataset.count);
+  const decimals = parseInt(el.dataset.decimals || "0", 10);
+  const dur = 1600;
+  const start = performance.now();
+  const startVal = 0;
+  function tick(now) {
+    const t = Math.min((now - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const v = startVal + (target - startVal) * eased;
+    el.textContent = v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    if (t < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  }
+  requestAnimationFrame(tick);
+}
 
-// Observe stat numbers
-const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const statNumber = entry.target;
-            const text = statNumber.textContent;
-            
-            // Extract number from text
-            let targetNumber = parseInt(text.replace(/[^0-9]/g, ''));
-            
-            // Check if it has a + sign
-            const hasPlus = text.includes('+');
-            
-            if (hasPlus) {
-                animateCounter(statNumber, targetNumber, 2000);
-            } else {
-                // No animation for year (2017)
-                statNumber.textContent = targetNumber;
-            }
-            
-            statObserver.unobserve(statNumber);
-        }
-    });
+const numberObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateNumber(e.target);
+      numberObserver.unobserve(e.target);
+    }
+  });
 }, { threshold: 0.5 });
 
+document.querySelectorAll("[data-count]").forEach(el => numberObserver.observe(el));
 
-// ===========================
-// Parallax Effect for Hero
-// ===========================
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroBackground = document.querySelector('.hero-background');
-    
-    if (heroBackground && scrolled < window.innerHeight) {
-        heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
+// ------------------------------------------------------------
+// Dynamic loads counter (preserve original logic)
+// ------------------------------------------------------------
+(function updateLoads() {
+  const el = document.querySelector("[data-dynamic-loads]");
+  if (!el) return;
+  const now = new Date();
+  const ref = new Date("2025-01-01");
+  const ms = 1000 * 60 * 60 * 24;
+  const daysSince = Math.floor((now - ref) / ms);
+  const refDay = Math.floor(ref.getTime() / ms);
+  let loads = 20580;
+  for (let i = 0; i < daysSince; i++) {
+    const seed = refDay + i;
+    const rand = Math.abs(Math.sin(seed * 9301 + 49297)) % 1;
+    loads += 8 + Math.floor(rand * 5);
+  }
+  el.dataset.count = loads;
+})();
+
+// ------------------------------------------------------------
+// Years live counter
+// ------------------------------------------------------------
+(function updateYears() {
+  const el = document.querySelector("[data-dynamic-years]");
+  if (!el) return;
+  el.dataset.count = new Date().getFullYear() - 2017;
+})();
+
+// ------------------------------------------------------------
+// Smooth anchor scrolling
+// ------------------------------------------------------------
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (href === "#" || href.length < 2) return;
+    const target = document.querySelector(href);
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 72;
+    window.scrollTo({ top, behavior: "smooth" });
+  });
 });
 
-// ===========================
-// Loading Animation
-// ===========================
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.5s ease';
-    
-    setTimeout(() => {
-        document.body.style.opacity = '1';
-    }, 100);
-});
-
-// ===========================
-// Image Lazy Loading
-// ===========================
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                }
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
+// ------------------------------------------------------------
+// Form submit state
+// ------------------------------------------------------------
+const form = document.getElementById("contactForm");
+if (form) {
+  form.addEventListener("submit", () => {
+    const btn = form.querySelector("button[type=submit]");
+    if (btn) { btn.disabled = true; btn.querySelector("span").textContent = "SENDING…"; }
+  });
 }
 
-// ===========================
-// Active Navigation Link on Scroll
-// ===========================
-const sections = document.querySelectorAll('section[id]');
+// ------------------------------------------------------------
+// Run initial state
+// ------------------------------------------------------------
+onScroll();
+updateActiveNav();
 
-window.addEventListener('scroll', () => {
-    const scrollY = window.pageYOffset;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-});
+// Auto-open first FAQ as hint
+const firstFaq = document.querySelector(".faq-item");
+if (firstFaq) {
+  setTimeout(() => {
+    firstFaq.classList.add("open");
+    const a = firstFaq.querySelector(".faq-a");
+    a.style.maxHeight = a.scrollHeight + "px";
+  }, 600);
+}
 
-// ===========================
-// Enhanced Hover Effects
-// ===========================
-document.querySelectorAll('.feature-card, .position-card, .partnership-col').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-10px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// ===========================
-// Print Stats in Console
-// ===========================
-console.log('%c MSV Transportation Inc ', 'background: #C8102E; color: white; font-size: 20px; font-weight: bold; padding: 10px;');
-console.log('%c Your Time — Our Priority ', 'font-size: 14px; color: #C8102E;');
-console.log('Website loaded successfully! 🚛');
+console.log("%cMSV Transportation", "background:#E11D2A;color:#F5F2EC;font-family:Anton,sans-serif;font-size:18px;padding:8px 14px;letter-spacing:2px");

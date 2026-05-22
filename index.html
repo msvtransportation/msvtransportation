@@ -1,544 +1,699 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MSV Transportation Inc - Your Time, Our Priority</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
-    <link rel="shortcut icon" href="favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
-    <link rel="manifest" href="favicon/site.webmanifest" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MSV Transportation — Drive Where You Matter</title>
+  <meta name="description" content="MSV Transportation Inc. — CDL-A driver careers, freight transportation, and dispatch since 2017. Based in Rolling Meadows, IL." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Full-page background video -->
-    <div id="video-background">
-        <video autoplay muted loop playsinline id="myVideo">
-            <source src="./media/background_video.mp4" type="video/mp4">
-        </video>
+
+  <!-- ============================================================
+       NAV
+  ============================================================ -->
+  <header class="nav" id="nav">
+    <div class="shell nav-inner">
+      <a href="#home" class="brand" aria-label="MSV Transportation home">
+        <img src="media/Logo_Heder.png" alt="MSV Transportation Inc." class="brand-logo" />
+        <span class="brand-text">
+          <small>Your Time · Our Priority · Est. 2017</small>
+        </span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#why">The Job</a></li>
+          <li><a href="#positions">Positions</a></li>
+          <li><a href="#inside">Inside MSV</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#shippers">Shippers</a></li>
+        </ul>
+      </nav>
+
+      <a href="#apply" class="nav-cta">
+        Apply Now
+        <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="home" class="hero" data-observe>
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <div class="hero-meta fade-up">
+          <span class="dot"></span>
+          <span>NOW HIRING CDL-A</span>
+          <span style="opacity:.4">·</span>
+          <span>ROLLING MEADOWS, IL</span>
+        </div>
+
+        <h1 class="hero-headline" data-split>
+          Your time<span class="red">,</span><br />
+          our priority.
+        </h1>
+
+        <em class="fade-up" style="display:block;font-style:normal;font-family:var(--f-sans);font-weight:300;font-size:clamp(15px,1.1vw,18px);letter-spacing:0.06em;color:var(--fg-mute);text-transform:uppercase;margin-top:28px;line-height:1.5;max-width:42ch;">
+          A freight company built around the people behind the wheel — competitive pay, modern equipment, and dispatch that answers.
+        </em>
+
+        <div class="hero-actions fade-up">
+          <a href="#positions" class="btn btn-primary">
+            View Open Positions
+            <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW21h72uhvrUICQMfG3XYR_NCZgUTvHozMsLgvGDQIx1XT9Q/viewform" class="btn btn-ghost" target="_blank" rel="noopener">
+            Start Application
+            <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up">
+        <div class="img-clip" style="position:absolute;inset:0;border-radius:4px;overflow:hidden;">
+          <img src="media/fleet.jpg" alt="MSV Transportation red fleet trucks" />
+        </div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>24 / 7 Dispatch</span>
+        </div>
+        <div class="hero-tagcard">
+          <small>Average Pay</small>
+          $3,000+<br>per week
+        </div>
+      </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <img src="./media/Logo_Heder.png" alt="MSV Transportation Inc" class="logo">
-            </div>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#about">ABOUT US</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="#careers">CAREERS</a></li>
-                <li><a href="#shippers">FOR SHIPPERS</a></li>
-                <li><a href="#faq">FAQ</a></li>
-                <li><a href="#contact" class="btn-contact">CONTACT</a></li>
-            </ul>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <span class="hero-scroll-line"></span>
+      <span>01 / 08</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MARQUEE
+  ============================================================ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">CDL-A Drivers Wanted</span>
+      <span class="marquee-item">48 Contiguous States</span>
+      <span class="marquee-item">$3,000+ Weekly</span>
+      <span class="marquee-item">Modern Freightliner Fleet</span>
+      <span class="marquee-item">Home Time That Counts</span>
+      <span class="marquee-item">25,000+ Loads Delivered</span>
+      <span class="marquee-item">CDL-A Drivers Wanted</span>
+      <span class="marquee-item">48 Contiguous States</span>
+      <span class="marquee-item">$3,000+ Weekly</span>
+      <span class="marquee-item">Modern Freightliner Fleet</span>
+      <span class="marquee-item">Home Time That Counts</span>
+      <span class="marquee-item">25,000+ Loads Delivered</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       STATS
+  ============================================================ -->
+  <section class="section section-tight" data-observe>
+    <div class="shell">
+      <div class="stats-strip">
+        <div class="stat fade-up">
+          <div class="stat-num"><span data-count="2017">0</span></div>
+          <div class="stat-label">Established. Independent &amp; family-led.</div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    YOUR TIME —<br>
-                    <span class="hero-subtitle" style="color: #E8E2D8;">OUR PRIORITY</span>
-                </h1>
-                <p class="hero-description">
-                    <strong>THE DIRECTION</strong> YOUR FREIGHT SHOULD <strong>MOVE FOR</strong> 
-                    <span class="highlight">EXCEPTIONAL</span> <strong>SERVICES</strong>
-                </p>
-                <a href="#contact" class="btn-primary">GET STARTED</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdW21h72uhvrUICQMfG3XYR_NCZgUTvHozMsLgvGDQIx1XT9Q/viewform?fbzx=5304892174742428910" class="btn-primary">APPLY</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-number">2017</div>
-                    <div class="stat-label">ESTABLISHED</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">25,000+</div>
-                    <div class="stat-label">LOADS DELIVERED</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">YEARS EXPERIENCE</div>
-                </div>
-            </div>
+        <div class="stat fade-up">
+          <div class="stat-num"><span data-dynamic-loads data-count="25000">0</span><span class="unit">+</span></div>
+          <div class="stat-label">Loads delivered across the lower 48.</div>
         </div>
-    </section>
-
-    <!-- What We Provide -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">WHAT WE PROVIDE</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <h3>SAFETY</h3>
-                    <p>Industry-leading safety standards and protocols</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💰</div>
-                    <h3>COMPETITIVE PAY</h3>
-                    <p>Top compensation packages in the industry</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚙️</div>
-                    <h3>MODERN EQUIPMENT</h3>
-                    <p>Latest fleet and cutting-edge technology</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏠</div>
-                    <h3>HOME TIME</h3>
-                    <p>Balanced routes for optimal work-life balance</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
-                    <h3>RESPECT & SUPPORT</h3>
-                    <p>Dedicated team supporting your success</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>GROWTH OPPORTUNITIES</h3>
-                    <p>Career advancement and training programs</p>
-                </div>
-            </div>
+        <div class="stat fade-up">
+          <div class="stat-num"><span data-dynamic-years data-count="9">0</span><span class="unit">+</span></div>
+          <div class="stat-label">Years on the road. Still growing.</div>
         </div>
-    </section>
-
-    <!-- About Us Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2 class="section-title" id="white_bg_color">ABOUT US</h2>
-                    <h3 class="about-subtitle">WHO WE ARE AND WHAT DRIVES US</h3>
-                    <p>At MSV Transportation Inc., we are a team of dedicated professionals committed to delivering excellence in freight transportation. Founded in 2017, we have built our reputation on reliability, safety, and customer satisfaction.</p>
-                    <p>Our mission is simple: to provide exceptional transportation services while treating our drivers with the respect and support they deserve. We believe that happy drivers lead to satisfied customers, and we've built our entire operation around this principle.</p>
-                    <div class="about-values">
-                        <div class="value-item">
-                            <h4>DEPENDABLE AND TRUSTWORTHY</h4>
-                            <p>Your freight, delivered on time, every time</p>
-                        </div>
-                        <div class="value-item">
-                            <h4>COMMUNICATION</h4>
-                            <p>Clear, transparent communication at every step</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <img src="./media/faq.jpg" alt="Transportation trucks">
-                </div>
-            </div>
-            
-            <!-- Driver Reviews -->
-            <div class="reviews-section">
-                <h3 class="reviews-title">DRIVERS + PARTNER REVIEWS</h3>
-                <div class="reviews-grid">
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"Best company I've worked for. Great communication and they truly care about their drivers."</p>
-                        <p class="review-author">— John M., Driver</p>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"Professional service, reliable delivery, and excellent support team. Highly recommend!"</p>
-                        <p class="review-author">— Sarah K., Partner</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Section -->
-            <div class="team-section">
-                <h3 class="section-subtitle" >MEET OUR TEAM</h3>
-                <p class="team-intro">Our experienced team is dedicated to your success</p>
-            </div>
+        <div class="stat fade-up">
+          <div class="stat-num">99.5<span class="unit">%</span></div>
+          <div class="stat-label">On-time delivery, year over year.</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2 class="section-title">SERVICES</h2>
-            
-            <!-- Dispatch & Logistics -->
-            <div class="service-block">
-                <h3 class="service-title">DISPATCH + LOGISTICS COORDINATION</h3>
-                <div class="service-content">
-                    <div class="service-text">
-                        <p>Our expert dispatch team works around the clock to ensure your freight moves efficiently and arrives on schedule. We utilize cutting-edge technology and decades of combined experience to optimize routes, manage schedules, and maintain constant communication.</p>
-                        <ul class="service-features">
-                            <li>24/7 DISPATCH SUPPORT</li>
-                            <li>REAL-TIME TRACKING & UPDATES</li>
-                            <li>ROUTE OPTIMIZATION</li>
-                            <li>PROACTIVE PROBLEM SOLVING</li>
-                            <li>TRANSPARENT COMMUNICATION</li>
-                        </ul>
-                    </div>
-                    <div class="service-images">
-                        <img src="media/call_centr.jpg" alt="Dispatch coordination">
-                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&h=300&fit=crop" alt="Logistics planning">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Freight Transportation -->
-            <div class="service-block" id="freight_transportation">
-                <h3 class="service-title" id="white_bg_color">FREIGHT TRANSPORTATION — OUR CORE SERVICE</h3>
-                <div class="service-content">
-                    <div class="service-text">
-                        <p id="white_bg_color">We specialize in reliable, efficient freight transportation across the nation. Our modern fleet and experienced drivers ensure your cargo arrives safely and on time, every time.</p>
-                        <ul class="service-features">
-                            <li id="white_bg_color">DRY VAN SERVICES</li>
-                            <li id="white_bg_color">TEMPERATURE-CONTROLLED TRANSPORT</li>
-                            <li id="white_bg_color">DEDICATED LANES</li>
-                            <li id="white_bg_color">EXPEDITED SHIPPING</li>
-                            <li id="white_bg_color">FULL TRUCKLOAD (FTL)</li>
-                        </ul>
-                    </div>
-                    <div class="service-images">
-                        <img src="media/black_truck_2.jpg" alt="MSV truck">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Hiring Services -->
-            <div class="service-block">
-                <h3 class="service-title">HIRING SERVICES</h3>
-                <div class="service-content">
-                    <div class="service-text">
-                        <p>Join our team of professional drivers and experience the MSV difference. We're always looking for qualified, safety-conscious drivers who take pride in their work.</p>
-                        <ul class="service-features">
-                            <li>COMPETITIVE COMPENSATION</li>
-                            <li>COMPREHENSIVE BENEFITS PACKAGE</li>
-                            <li>HOME TIME PRIORITY</li>
-                            <li>MODERN EQUIPMENT</li>
-                            <li>ONGOING TRAINING & SUPPORT</li>
-                        </ul>
-                        <a href="#careers" class="btn-secondary">VIEW OPEN POSITIONS</a>
-                    </div>
-                    <div class="service-images">
-                        <img src="media/hiring_service.jpg" alt="Professional driver">
-                    </div>
-                </div>
-            </div>
+  <!-- ============================================================
+       THE JOB
+  ============================================================ -->
+  <section id="why" class="section" data-observe>
+    <div class="shell">
+      <div class="sec-head">
+        <div class="left">
+          <span class="eyebrow"><span class="num">01</span> / The Job</span>
+          <h2 class="display-md title" data-split>Built around the driver, not around the load.</h2>
         </div>
-    </section>
-
-    <!-- Careers Section -->
-    <section id="careers" class="careers-section">
-        <div class="container">
-            <h2 class="section-title">CAREERS</h2>
-            <div class="careers-header">
-                <h3>JOIN OUR TEAM OF PROFESSIONAL DRIVERS</h3>
-                <p>Build your career with a company that values your time, safety, and success</p>
-            </div>
-
-            <div class="positions-grid">
-                <div class="position-card">
-                    <h4>OTR DRIVER</h4>
-                    <div class="position-details">
-                        <p><strong>COMPETITIVE PAY:</strong> $3,000+ week</p>
-                        <p><strong>HOME TIME:</strong> 2 weeks out, 2-3 days home</p>
-                        <p><strong>REQUIREMENTS:</strong> Valid CDL-A, 1+ year experience</p>
-                    </div>
-                    <a href="#contact" class="btn-apply">APPLY NOW</a>
-                </div>
-                
-                <div class="position-card">
-                    <h4>REGIONAL DRIVER</h4>
-                    <div class="position-details">
-                        <p><strong>COMPETITIVE PAY:</strong> $2,500+ week</p>
-                        <p><strong>HOME TIME:</strong> Home weekends</p>
-                        <p><strong>REQUIREMENTS:</strong> Valid CDL-A, 6+ months experience</p>
-                    </div>
-                    <a href="#contact" class="btn-apply">APPLY NOW</a>
-                </div>
-            </div>
-
-            <div class="careers-benefits">
-                <h3>WHAT WE PROVIDE</h3>
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Competitive Pay & Bonuses</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Health, Dental & Vision Insurance</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>401(k) Retirement Plan</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Paid Time Off</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Modern Equipment Fleet</span>
-                    </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>24/7 Dispatch Support</span>
-                    </div>
-                </div>
-            </div>
+        <div class="right">
+          <p>Most fleets sell drivers on a paycheck and forget the rest. We obsess about the rest — the dispatcher you can actually reach, the tractor that doesn't break down, and the schedule that gets you home when promised.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- For Shippers & Brokers -->
-    <section id="shippers" class="shippers-section">
-        <div class="container">
-            <h2 class="section-title">FOR SHIPPERS & BROKERS</h2>
-            <div class="shippers-content">
-                <h3>PARTNER WITH MSV TRANSPORTATION INC.</h3>
-                <p class="lead">Reliable capacity when you need it most. Our commitment to excellence makes us the partner of choice for shippers and brokers nationwide.</p>
-                
-                <div class="partnership-grid">
-                    <div class="partnership-col">
-                        <h4>FAST</h4>
-                        <p>Quick response times and rapid load acceptance</p>
-                    </div>
-                    <div class="partnership-col">
-                        <h4>RELIABLE</h4>
-                        <p>On-time delivery with 99.5% success rate</p>
-                    </div>
-                    <div class="partnership-col">
-                        <h4>SAFE</h4>
-                        <p>Safety-first culture with excellent CSA scores</p>
-                    </div>
-                </div>
+      <div class="reasons stagger">
+        <article class="reason">
+          <div class="idx">01</div>
+          <h3 class="title">Competitive Pay</h3>
+          <p class="desc">Top-quartile mileage rates plus weekly settlements, fuel bonuses, and clean-inspection incentives.</p>
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        </article>
+        <article class="reason">
+          <div class="idx">02</div>
+          <h3 class="title">Modern Fleet</h3>
+          <p class="desc">Late-model Freightliner Cascadia tractors with inverters, fridges, and APUs — set up to live in, not just drive.</p>
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        </article>
+        <article class="reason">
+          <div class="idx">03</div>
+          <h3 class="title">Home Time That Counts</h3>
+          <p class="desc">Routes built so you actually see your family. Regional drivers home weekends; OTR home every other week.</p>
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        </article>
+        <article class="reason">
+          <div class="idx">04</div>
+          <h3 class="title">Dispatch That Answers</h3>
+          <p class="desc">A real person on the line, day or night. No phone trees, no scripts. Just someone who knows your truck.</p>
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        </article>
+        <article class="reason">
+          <div class="idx">05</div>
+          <h3 class="title">Safety, First</h3>
+          <p class="desc">Strong CSA scores and a culture where slowing down is the right call. Your judgment is backed by ours.</p>
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        </article>
+        <article class="reason">
+          <div class="idx">06</div>
+          <h3 class="title">Respect &amp; Growth</h3>
+          <p class="desc">Trainer pay, lead-driver tracks, and a team that knows your name. Built to keep, not to churn.</p>
+          <div class="icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-                <div class="professional-drivers">
-                    <h3>JOIN OUR TEAM OF PROFESSIONAL DRIVERS</h3>
-                    <p>We're looking for safety-conscious professionals who take pride in their work and want to join a company that respects and values their contributions.</p>
-                </div>
-            </div>
+  <!-- ============================================================
+       POSITIONS
+  ============================================================ -->
+  <section id="positions" class="section" data-observe>
+    <div class="shell">
+      <div class="sec-head">
+        <div class="left">
+          <span class="eyebrow"><span class="num">02</span> / Open Positions</span>
+          <h2 class="display-md title" data-split>Two ways to drive with us.</h2>
         </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq-section">
-        <div class="container">
-            <h2 class="section-title">FAQ — QUESTIONS & ANSWERS</h2>
-            <p class="faq-intro">FREQUENTLY ASKED QUESTIONS</p>
-            
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: WHAT ARE YOUR HOURS OF OPERATION?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: Our dispatch team operates 24/7 to provide round-the-clock support for our drivers and customers.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: WHAT AREAS DO YOU SERVICE?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: We provide transportation services across all 48 contiguous United States with specialized lanes in key freight corridors.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: DO YOU OFFER EXPEDITED SHIPPING?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: Yes, we offer expedited shipping services for time-sensitive freight with dedicated teams available for urgent deliveries.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: WHAT TYPES OF TRAILERS DO YOU OPERATE?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: Our fleet includes dry vans and temperature-controlled trailers, all maintained to the highest standards.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: HOW DO I TRACK MY SHIPMENT?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: We provide real-time tracking updates and our dispatch team is available 24/7 to provide status updates on your freight.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: WHAT ARE YOUR DRIVER REQUIREMENTS?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: We require a valid CDL-A license, minimum 6 months experience (varies by position), clean driving record, and ability to pass DOT physical and drug screening.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: DO YOU PROVIDE TRAINING FOR NEW DRIVERS?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: Yes, we offer comprehensive orientation and ongoing training programs to ensure our drivers have the knowledge and skills for success.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Q: WHAT IS YOUR SAFETY RECORD?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>A: Safety is our top priority. We maintain excellent CSA scores and have implemented comprehensive safety protocols across our operation.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="right">
+          <p>We hire CDL-A drivers with at least six months of verifiable experience and a clean MVR. Apply once — we'll match you to the lane that fits your life.</p>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">CONTACT</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>GET IN TOUCH</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <strong>EMAIL:</strong>
-                            <a href="mailto:sm@msvtransportation.com">sm@msvtransportation.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <strong>PHONE:</strong>
-                            <a href="tel:+17084020496">(708) 402-0496</a>
-                        </div>
-                        <div class="contact-item">
-                            <strong>ADDRESS:</strong>
-                            <p>3315 W Algonquin Rd<br>Rolling Meadows, IL 60008</p>
-                        </div>
-                        <div class="contact-item">
-                            <strong>HOURS:</strong>
-                            <p>24/7 Dispatch Available</p>
-                        </div>
-                    </div>
-                </div>
-
-<!--Contact Form --> 
-
-        <div class="contact-form-wrapper">
-            <form class="contact-form" id="contactForm" action="https://formsubmit.co/16c3f1c8bb0f0966c60fa58bf915ede4 " method="POST">
-                <!-- Hidden fields for FormSubmit -->
-                <!-- <input type="hidden" name="_subject" value="New Contact from MSV Transportation Website"> -->
-                <input type="hidden" name="_captcha" value="true">
-                <input type="hidden" name="_template" value="box">
-                <input type="text" name="_honey" style="display:none">
-                <input type="hidden" name="_replyto" value="%email%">
-                <!-- <input type="hidden" name="_next" value="https://msvtransportation.us/thank-you.html"> -->
-
-                
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Full Name *" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Email Address *" required>
-                </div>
-                <div class="form-group">
-                    <input type="tel" name="phone" placeholder="Phone Number" >
-                </div>
-                <div class="form-group">
-                    <select name="inquiry" required>
-                        <option value="">Select Inquiry Type *</option>
-                        <option value="driver">Driver Application</option>
-                        <option value="shipping">Shipping Quote</option>
-                        <option value="broker">Broker Partnership</option>
-                        <option value="general">General Inquiry</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" rows="5" placeholder="Your Message *" required></textarea>
-                </div>
-                <button type="submit" class="btn-submit">SEND MESSAGE</button>
-            </form>
-        </div> 
-    </div>           
-
-            <!-- Map Placeholder -->
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2962.198312599557!2d-88.02266012482148!3d42.060368453984054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880faff86e85f95d%3A0x34f6180644fee3e0!2s3315%20W%20Algonquin%20Rd%2C%20Rolling%20Meadows%2C%20IL%2060008!5e0!3m2!1sen!2sus!4v1771378589848!5m2!1sen!2sus"
-                    width="100%" 
-                    height="400" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+      <div class="positions stagger">
+        <article class="position-card">
+          <span class="role-tag">
+            <span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>
+            Now Hiring
+          </span>
+          <h3>OTR Driver</h3>
+          <p style="color:var(--fg-dim);font-size:15px;margin-top:14px;max-width:42ch">
+            Run the long lanes with a steady tractor and a dispatcher who's already planned your next load.
+          </p>
+          <div class="role-meta">
+            <div>
+              <div class="label">Weekly Pay</div>
+              <div class="value">$3,000+ <small>per week, settled weekly</small></div>
             </div>
+            <div>
+              <div class="label">Schedule</div>
+              <div class="value">2/2–3 <small>weeks out / days home</small></div>
+            </div>
+            <div>
+              <div class="label">Requirements</div>
+              <div class="value">CDL-A <small>1+ year experience</small></div>
+            </div>
+            <div>
+              <div class="label">Equipment</div>
+              <div class="value">Cascadia <small>Dry van or reefer</small></div>
+            </div>
+          </div>
+          <div class="apply-row">
+            <a href="#apply" class="btn btn-primary">
+              Apply
+              <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <a href="tel:+17084020496" class="btn-link">Or call (708) 402-0496</a>
+          </div>
+        </article>
+
+        <article class="position-card">
+          <span class="role-tag">
+            <span style="width:6px;height:6px;border-radius:999px;background:currentColor"></span>
+            Now Hiring
+          </span>
+          <h3>Regional Driver</h3>
+          <p style="color:var(--fg-dim);font-size:15px;margin-top:14px;max-width:42ch">
+            Midwest lanes with predictable home time. Built for drivers who want the road and the weekend.
+          </p>
+          <div class="role-meta">
+            <div>
+              <div class="label">Weekly Pay</div>
+              <div class="value">$2,500+ <small>per week, settled weekly</small></div>
+            </div>
+            <div>
+              <div class="label">Schedule</div>
+              <div class="value">Home <small>weekends, every week</small></div>
+            </div>
+            <div>
+              <div class="label">Requirements</div>
+              <div class="value">CDL-A <small>6+ months experience</small></div>
+            </div>
+            <div>
+              <div class="label">Equipment</div>
+              <div class="value">Cascadia <small>53′ dry van</small></div>
+            </div>
+          </div>
+          <div class="apply-row">
+            <a href="#apply" class="btn btn-primary">
+              Apply
+              <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </a>
+            <a href="tel:+17084020496" class="btn-link">Or call (708) 402-0496</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="benefits stagger">
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+          <div><strong>Health, Dental &amp; Vision</strong><em>Coverage from day 60</em></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="media/Logo_Heder.png" alt="MSV Transportation Inc">
-                    <p>Your Time — Our Priority</p>
-                </div>
-                <div class="footer-links">
-                    <h4>QUICK LINKS</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#careers">Careers</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>CONTACT INFO</h4>
-                    <p>Email: sm@msvtransportation.com</p>
-                    <p>Phone: (708) 402-0496</p>
-                    <p>24/7 Dispatch Available</p>
-                </div>
-                <div class="footer-social">
-                    <h4>FOLLOW US</h4>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/msvtransportation.inc/" aria-label="Facebook">Facebook</a>
-                        <a href="https://www.instagram.com/msv_transportation_inc/" aria-label="Instagram">Instagram</a> 
-                        <!--<a href="#" aria-label="LinkedIn">LinkedIn</a>// -->
-                        <!--<a href="#" aria-label="Twitter">Twitter</a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MSV Transportation Inc. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-            </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+          <div><strong>401(k) Match</strong><em>Up to 4% company match</em></div>
         </div>
-    </footer>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+          <div><strong>Paid Time Off</strong><em>Earned from your first week</em></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+          <div><strong>Clean Inspection Bonus</strong><em>$250 per Level I/II</em></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+          <div><strong>Referral Program</strong><em>$2,000 per driver hired</em></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10l4 4 8-8" stroke="currentColor" stroke-width="2"/></svg>
+          <div><strong>24/7 Roadside</strong><em>One number, real humans</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ============================================================
+       INSIDE MSV — Fleet
+  ============================================================ -->
+  <section id="inside" class="section" data-observe>
+    <div class="shell">
+      <div class="sec-head">
+        <div class="left">
+          <span class="eyebrow"><span class="num">03</span> / Inside MSV</span>
+          <h2 class="display-md title" data-split>The truck you'll spend a week in.</h2>
+        </div>
+        <div class="right">
+          <p>We keep our fleet young because we know what it's like to be 800 miles from home in a tractor that won't start. Every cab is spec'd by drivers, for drivers.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="split-img img-clip" data-observe>
+          <img src="media/black_truck_2.jpg" alt="MSV Freightliner tractor" />
+          <div class="floating-stat">
+            <div class="n">&lt; 4 yrs</div>
+            <div class="l">Average tractor age</div>
+          </div>
+        </div>
+        <div class="split-body fade-up">
+          <h2 class="display-sm">Spec'd to live in.</h2>
+          <p>Inverters, fridges, APUs, and quality bunks come standard on every sleeper. Day cabs run premium Bose audio and clean idle certification.</p>
+          <p>Maintenance lives in-house — most issues get caught before they leave the yard. When something happens on the road, our 24/7 line gets you rolling fast.</p>
+          <div class="small-spec">
+            <div>
+              <div class="l">Tractor</div>
+              <div class="v">Freightliner Cascadia</div>
+            </div>
+            <div>
+              <div class="l">Trailers</div>
+              <div class="v">53′ Dry Van &amp; Reefer</div>
+            </div>
+            <div>
+              <div class="l">Drivetrain</div>
+              <div class="v">DD15 / Auto</div>
+            </div>
+            <div>
+              <div class="l">Coverage</div>
+              <div class="v">48 States</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INSIDE MSV — About
+  ============================================================ -->
+  <section class="section section-tight" data-observe>
+    <div class="shell">
+      <div class="split">
+        <div class="split-body fade-up" style="order:1">
+          <span class="eyebrow"><span class="num">04</span> / Who We Are</span>
+          <h2 class="display-sm" style="margin-top:18px">A family-led carrier, not a number factory.</h2>
+          <p>MSV started in 2017 with one truck and a phone that always got picked up. Almost a decade later, we still pick up. We've grown deliberately — adding equipment when the lanes are real and the drivers are ready.</p>
+          <p>What hasn't changed: every driver knows the dispatcher by name, and the dispatcher knows the truck by number. That's the part we won't outgrow.</p>
+          <a href="#apply" class="btn-link" style="margin-top:24px">
+            Talk to our team
+            <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+        <div class="split-img img-clip" data-observe style="order:2">
+          <img src="media/call_centr.jpg" alt="MSV dispatch team" />
+          <div class="floating-stat">
+            <div class="n">24/7</div>
+            <div class="l">Dispatch staffed, always</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       REVIEWS
+  ============================================================ -->
+  <section class="section" data-observe>
+    <div class="shell">
+      <div class="sec-head">
+        <div class="left">
+          <span class="eyebrow"><span class="num">05</span> / From the Cab</span>
+          <h2 class="display-md title" data-split>The drivers tell the story.</h2>
+        </div>
+        <div class="right">
+          <p>Truth in trucking starts with the people behind the wheel. Here's what our drivers and partners say — unedited.</p>
+        </div>
+      </div>
+
+      <div class="reviews stagger">
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <p class="text">"Best company I've worked for. Great communication and they truly care about their drivers. Dispatch picks up on the first ring."</p>
+          <div class="who">
+            <div class="avatar">J</div>
+            <div>
+              <div class="name">John M.</div>
+              <div class="role">OTR Driver · 3 yrs</div>
+            </div>
+          </div>
+        </article>
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <p class="text">"Professional service, reliable delivery, and an excellent support team. We've moved hundreds of loads with MSV — no surprises."</p>
+          <div class="who">
+            <div class="avatar">S</div>
+            <div>
+              <div class="name">Sarah K.</div>
+              <div class="role">Broker Partner</div>
+            </div>
+          </div>
+        </article>
+        <article class="review">
+          <div class="stars">★★★★★</div>
+          <p class="text">"Trucks are new, settlements are on time, and home time is real. After two years here I won't drive for anybody else."</p>
+          <div class="who">
+            <div class="avatar">R</div>
+            <div>
+              <div class="name">Roman V.</div>
+              <div class="role">Regional Driver · 2 yrs</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section id="faq" class="section" data-observe>
+    <div class="shell">
+      <div class="faq">
+        <div class="faq-side fade-up">
+          <span class="eyebrow"><span class="num">06</span> / FAQ</span>
+          <h2 class="display-md" style="margin-top:18px">Questions, answered.</h2>
+          <p>The most common things drivers ask before they sign. If yours isn't here, call dispatch — we pick up.</p>
+          <a href="tel:+17084020496" class="ask">
+            (708) 402-0496
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </a>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q"><span>How fast can I get hired?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Most qualified drivers go from first call to orientation in under a week. Apply online or call dispatch — if your paperwork is in order, we move fast.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>What are the driver requirements?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Valid CDL-A, six months minimum verifiable OTR experience (one year for our long lanes), clean MVR, and the ability to pass DOT physical and drug screening.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>Where do you run?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">All 48 contiguous states, with dedicated lanes in the Midwest, Southeast, and Texas triangle. Regional drivers stay within roughly 500 miles of home.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>How is pay structured?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Weekly settlements via direct deposit, mileage rates above the regional average, plus performance bonuses (clean inspection, fuel, on-time). No held-back pay, no chargebacks.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>What kind of equipment will I drive?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Late-model Freightliner Cascadia tractors with APUs, inverters, fridges, and premium bunks. Trailers are 53′ dry van or temperature-controlled reefer, maintained in-house.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>What's the home-time policy?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">Regional drivers home every weekend. OTR drivers two weeks out, two to three days home. We respect what's on the calendar — birthdays, anniversaries, doctor's appointments. Tell us and we route around it.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>Do you train new CDL holders?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">We run a paid orientation and finishing program for drivers with under one year of experience. Trainers are our top-rated drivers — paid extra for the role, not assigned to it.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q"><span>What's your safety record?</span><span class="plus"></span></button>
+            <div class="faq-a"><div class="faq-a-inner">CSA scores well below industry average across BASICs. Annual safety audits in-house, plus quarterly driver-led reviews. Safety isn't a poster on the wall — it's how we route.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SHIPPERS
+  ============================================================ -->
+  <section id="shippers" class="shippers section" data-observe>
+    <div class="shell shippers-grid">
+      <div class="fade-up">
+        <span class="eyebrow"><span class="num">07</span> / For Shippers &amp; Brokers</span>
+        <h2 class="display-md" style="margin-top:18px;max-width:14ch" data-split>Capacity you can plan around.</h2>
+      </div>
+      <div class="fade-up">
+        <p class="lede">A modern fleet, a tenured driver pool, and a dispatch desk that calls you before you call us. We move dry van and reefer freight across the lower 48 with the on-time numbers to back it up.</p>
+        <div class="shippers-points">
+          <div class="shippers-point">
+            <div class="n">→ FAST</div>
+            <h4>Same-day quotes</h4>
+            <p>Tendered to a tractor within the hour, most loads.</p>
+          </div>
+          <div class="shippers-point">
+            <div class="n">→ RELIABLE</div>
+            <h4>99.5% on-time</h4>
+            <p>Twelve-month rolling average, audited monthly.</p>
+          </div>
+          <div class="shippers-point">
+            <div class="n">→ SAFE</div>
+            <h4>Audited carrier</h4>
+            <p>$1M / $100K cargo policy, clean SAFER record.</p>
+          </div>
+        </div>
+        <a href="#apply" class="btn btn-ghost" style="margin-top:36px;border-color:var(--hair-strong)">
+          Request a Quote
+          <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       APPLY / CONTACT
+  ============================================================ -->
+  <section id="apply" class="section" data-observe>
+    <div class="shell">
+      <div class="sec-head">
+        <div class="left">
+          <span class="eyebrow"><span class="num">08</span> / Get in Touch</span>
+          <h2 class="display-md title" data-split>Let's talk about your next lane.</h2>
+        </div>
+        <div class="right">
+          <p>Whether you're a driver looking for a better seat or a shipper hunting reliable capacity, the same line works. We respond within one business day — usually within the hour.</p>
+        </div>
+      </div>
+
+      <div class="apply">
+        <div class="apply-info">
+          <div class="contact-list">
+            <div class="contact-row">
+              <div class="label">Phone</div>
+              <div class="val"><a href="tel:+17084020496">(708) 402-0496</a></div>
+            </div>
+            <div class="contact-row">
+              <div class="label">Email</div>
+              <div class="val"><a href="/cdn-cgi/l/email-protection#186b7558756b6e6c6a79766b68776a6c796c717776367b7775"><span class="__cf_email__" data-cfemail="06756b466b757072746768757669747267726f69682865696b">[email&#160;protected]</span></a></div>
+            </div>
+            <div class="contact-row">
+              <div class="label">Address</div>
+              <div class="val">3315 W Algonquin Rd<br>Rolling Meadows, IL 60008</div>
+            </div>
+            <div class="contact-row">
+              <div class="label">Dispatch</div>
+              <div class="val">24 / 7 — every day of the year</div>
+            </div>
+            <div class="contact-row">
+              <div class="label">DOT / MC</div>
+              <div class="val">Active &amp; in good standing</div>
+            </div>
+          </div>
+        </div>
+
+        <form class="form" id="contactForm" action="https://formsubmit.co/16c3f1c8bb0f0966c60fa58bf915ede4" method="POST">
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="_template" value="box" />
+          <input type="text" name="_honey" style="display:none" />
+
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="f-name">Name</label>
+              <input id="f-name" type="text" name="name" placeholder="Your full name" required />
+            </div>
+            <div class="form-row">
+              <label for="f-phone">Phone</label>
+              <input id="f-phone" type="tel" name="phone" placeholder="(___) ___-____" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="f-email">Email</label>
+            <input id="f-email" type="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-row">
+            <label for="f-inquiry">I'm interested in</label>
+            <select id="f-inquiry" name="inquiry" required>
+              <option value="">Choose one…</option>
+              <option value="driver">Driving for MSV</option>
+              <option value="shipping">A shipping quote</option>
+              <option value="broker">Broker partnership</option>
+              <option value="general">Something else</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="f-msg">Message</label>
+            <textarea id="f-msg" name="message" rows="4" placeholder="Tell us about your CDL, your lanes, or your freight." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <span>Send Message</span>
+            <svg class="arrow" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <div class="map-wrap fade-up">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2962.198312599557!2d-88.02266012482148!3d42.060368453984054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880faff86e85f95d%3A0x34f6180644fee3e0!2s3315%20W%20Algonquin%20Rd%2C%20Rolling%20Meadows%2C%20IL%2060008!5e0!3m2!1sen!2sus!4v1771378589848!5m2!1sen!2sus"
+          loading="lazy"
+          allowfullscreen
+          title="MSV Transportation office, Rolling Meadows IL"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer" data-observe>
+    <div class="shell">
+      <div class="footer-logo-row fade-up">
+        <img src="media/Logo_Heder.png" alt="MSV Transportation Inc." class="footer-logo" />
+        <div class="footer-tag">Your Time<br>Our Priority</div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h5>The Company</h5>
+          <p>MSV Transportation Inc. is a family-led freight carrier based in Rolling Meadows, Illinois, serving shippers and drivers across the lower 48 since 2017.</p>
+        </div>
+        <div class="footer-col">
+          <h5>For Drivers</h5>
+          <ul>
+            <li><a href="#positions">Open Positions</a></li>
+            <li><a href="#why">The Job</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#apply">Apply</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>For Partners</h5>
+          <ul>
+            <li><a href="#shippers">For Shippers</a></li>
+            <li><a href="#inside">Our Fleet</a></li>
+            <li><a href="#apply">Request Quote</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+17084020496">(708) 402-0496</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#cebda38ea3bdb8babcafa0bdbea1bcbaafbaa7a1a0e0ada1a3"><span class="__cf_email__" data-cfemail="52213f123f21242620333c21223d202633263b3d3c7c313d3f">[email&#160;protected]</span></a></li>
+            <li><a href="https://www.facebook.com/msvtransportation.inc/" target="_blank" rel="noopener">Facebook</a></li>
+            <li><a href="https://www.instagram.com/msv_transportation_inc/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2017–<span id="year">2026</span> MSV Transportation Inc.</div>
+        <div>Your Time, Our Priority.</div>
+        <div>
+          <a href="#">Privacy</a> · <a href="#">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="script.js"></script>
 </body>
 </html>
