@@ -58,8 +58,9 @@ document.querySelectorAll("[data-observe]").forEach(el => inViewObserver.observe
 // Sticky nav state
 // ------------------------------------------------------------
 const nav = document.querySelector(".nav");
+const forceScrolledNav = document.body.classList.contains("legal-page");
 const onScroll = () => {
-  if (window.scrollY > 24) nav.classList.add("scrolled");
+  if (forceScrolledNav || window.scrollY > 24) nav.classList.add("scrolled");
   else nav.classList.remove("scrolled");
   parallaxHero();
   updateActiveNav();
@@ -91,7 +92,9 @@ function updateActiveNav() {
     if (sec.offsetTop <= y) active = sec.id;
   });
   navLinks.forEach(a => {
-    const target = a.getAttribute("href").replace("#", "");
+    const href = a.getAttribute("href");
+    if (!href.startsWith("#")) return;
+    const target = href.replace("#", "");
     a.classList.toggle("active", target === active);
   });
 }
