@@ -143,6 +143,10 @@ function animateNumber(el) {
   el.dataset.counted = "1";
   const target = parseFloat(el.dataset.count);
   const decimals = parseInt(el.dataset.decimals || "0", 10);
+  const formatNumber = (value) => {
+    if (el.dataset.format === "plain") return value.toFixed(decimals);
+    return value.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+  };
   const dur = 1600;
   const start = performance.now();
   const startVal = 0;
@@ -150,9 +154,9 @@ function animateNumber(el) {
     const t = Math.min((now - start) / dur, 1);
     const eased = 1 - Math.pow(1 - t, 3);
     const v = startVal + (target - startVal) * eased;
-    el.textContent = v.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    el.textContent = formatNumber(v);
     if (t < 1) requestAnimationFrame(tick);
-    else el.textContent = target.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+    else el.textContent = formatNumber(target);
   }
   requestAnimationFrame(tick);
 }
